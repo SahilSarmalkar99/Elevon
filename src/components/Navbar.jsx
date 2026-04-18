@@ -1,14 +1,14 @@
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { runPageExit } from "../utils/pageTransition";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation();
-
   const [isOpen, setIsOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const lastScrollY = useRef(0);
+
+  const location = useLocation();
 
   const navItems = [
     { name: "About", path: "/about" },
@@ -17,28 +17,16 @@ export default function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
-  // 🔥 Handle navigation with transition
-  const handleNavigate = (path) => {
-    if (location.pathname === path) return; // avoid reloading same page
-
-    setIsOpen(false);
-
-    runPageExit(() => {
-      navigate(path);
-    });
-  };
-
-  // 🔥 Hide / show navbar on scroll
+  // 🔥 Smooth scroll hide/show (fixed)
   useEffect(() => {
     const handleScroll = () => {
-      if (isOpen) return;
+      if (isOpen) return; // don't hide nav when menu open
 
       if (window.scrollY > lastScrollY.current && window.scrollY > 80) {
         setShowNav(false);
       } else {
         setShowNav(true);
       }
-
       lastScrollY.current = window.scrollY;
     };
 
@@ -51,7 +39,7 @@ export default function Navbar() {
     setIsOpen(false);
   }, [location]);
 
-  // 🔥 Lock scroll when mobile menu open
+  // 🔥 Lock scroll when menu open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
@@ -66,42 +54,41 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
 
-          {/* LOGO */}
-          <span
-            onClick={() => handleNavigate("/")}
-            className="cursor-pointer text-lg md:text-xl font-[font5] tracking-widest"
-          >
+          {/* Logo */}
+          <Link to={"/"} className="text-lg md:text-xl font-[font5] tracking-widest">
             ELEVON
-          </span>
+          </Link>
 
-          {/* DESKTOP MENU */}
+          {/* Desktop */}
           <div className="hidden md:flex items-center font-[font4] gap-10 text-[18px]">
             {navItems.map((item, i) => (
-              <span
+              <NavLink
                 key={i}
-                onClick={() => handleNavigate(item.path)}
-                className={`cursor-pointer transition ${
-                  location.pathname === item.path
-                    ? "text-white"
-                    : "text-gray-300 hover:text-white"
-                }`}
+                to={item.path}
+                className={({ isActive }) =>
+                  `transition ${
+                    isActive
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white"
+                  }`
+                }
               >
                 {item.name}
-              </span>
+              </NavLink>
             ))}
           </div>
 
           {/* CTA */}
           <div className="hidden md:block">
-            <span
-              onClick={() => handleNavigate("/contact")}
-              className="cursor-pointer px-5 py-2 font-[font5] hover:opacity-80 transition"
+            <Link
+              to="/contact"
+              className="px-5 py-2 font-[font5] hover:opacity-80 transition"
             >
               Let’s Grow
-            </span>
+            </Link>
           </div>
 
-          {/* MOBILE BUTTON */}
+          {/* Mobile Button */}
           <button
             className="md:hidden text-2xl z-[60]"
             onClick={() => setIsOpen(!isOpen)}
@@ -111,7 +98,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* 🔥 MOBILE MENU */}
+      {/* 🔥 FULLSCREEN MOBILE MENU */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
           isOpen
@@ -121,6 +108,7 @@ export default function Navbar() {
       >
         {/* Background */}
         <div className="absolute inset-0 backdrop-blur-xl bg-black/80" />
+
         <div className="absolute inset-0 bg-gradient-to-br from-[#7a1f1f]/60 via-black to-black" />
 
         {/* Glow */}
@@ -132,12 +120,9 @@ export default function Navbar() {
 
           {/* Top */}
           <div className="flex justify-between items-center">
-            <span
-              onClick={() => handleNavigate("/")}
-              className="cursor-pointer text-xl font-[font5] tracking-widest"
-            >
+            <h1 className="text-xl font-[font5] tracking-widest">
               ELEVON
-            </span>
+            </h1>
 
             <button
               onClick={() => setIsOpen(false)}
@@ -147,31 +132,28 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Links */}
+          {/* Menu Items */}
           <div className="flex flex-col gap-6 text-2xl font-[font4] mt-10">
             {navItems.map((item, i) => (
-              <span
+              <NavLink
                 key={i}
-                onClick={() => handleNavigate(item.path)}
-                className={`cursor-pointer transition ${
-                  location.pathname === item.path
-                    ? "text-white"
-                    : "text-gray-300 hover:text-white"
-                }`}
+                to={item.path}
+                className={({ isActive }) =>
+                  `transition ${
+                    isActive
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white"
+                  }`
+                }
               >
                 {item.name}
-              </span>
+              </NavLink>
             ))}
           </div>
 
           {/* Bottom CTA */}
           <div className="text-lg font-[font5]">
-            <span
-              onClick={() => handleNavigate("/contact")}
-              className="cursor-pointer"
-            >
-              Let’s Grow
-            </span>
+            <Link to="/contact">Let’s Grow</Link>
           </div>
         </div>
       </div>
