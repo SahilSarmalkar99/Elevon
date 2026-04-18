@@ -13,29 +13,30 @@ const useCardPop = () => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray(".card");
 
-      cards.forEach((card) => {
-        gsap.fromTo(
-          card,
-          {
-            scale: 0,
-            opacity: 0,
-            y: 40, // slight upward pop
+      gsap.fromTo(
+        cards,
+        {
+          scale: 0.85,              // 🔥 subtle (not 0)
+          opacity: 0.5,
+          y: 60,
+          filter: "blur(2px)",      // 🔥 depth feel
+          transformOrigin: "center center",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          // duration: 1,      //  premium easing
+          // stagger: 0.12,            // smooth flow
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 60%",
+            end: "top 30%",
+            scrub: 2,             // smoother than true
           },
-          {
-            scale: 1,
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "back.out(1.7)", // 🔥 pop effect
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              end: "top 60%",
-              scrub: true, // 👈 key for reverse on scroll
-            },
-          }
-        );
-      });
+        }
+      );
     }, ref);
 
     return () => ctx.revert();

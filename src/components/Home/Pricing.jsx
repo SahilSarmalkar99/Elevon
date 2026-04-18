@@ -1,6 +1,8 @@
 import React from "react";
 import { Rocket, Sparkles, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import useTextReveal from "../../hooks/useTextReveal";
+import useFadeIn from "../../hooks/useFadeIn";
 
 const pricingPlans = [
   {
@@ -34,9 +36,12 @@ const pricingPlans = [
 ];
 
 const Pricing = () => {
+  const text = useTextReveal(); 
+  const para = useTextReveal(); 
+  const card = useFadeIn(); 
   const navigate = useNavigate();
   return (
-    <section className="w-full bg-black px-2 text-white py-24">
+    <section ref={card} className="w-full bg-black px-2 text-white py-24">
 
       {/* Heading */}
       <div className="max-w-4xl mx-auto text-center px-4 mb-20">
@@ -44,17 +49,17 @@ const Pricing = () => {
           Pricing
         </p>
 
-        <h2 className="text-4xl md:text-6xl font-[font5] leading-tighter tracking-tighter mb-4">
+        <h2 ref={text} className="text-4xl md:text-6xl font-[font5] leading-tighter tracking-tighter mb-4">
           Simple Pricing. <br /> Serious Results.
         </h2>
 
-        <p className="text-gray-400 font-[font4] max-w-xl mx-auto">
+        <p ref={para} className="text-gray-400 font-[font4] max-w-xl mx-auto">
           Our plans give you exactly what you need — nothing more, nothing less — to grow with confidence.
         </p>
       </div>
 
       {/* Cards */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-2">
+      <div className="fade-item max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-2">
 
         {pricingPlans.map((plan, index) => (
           <div

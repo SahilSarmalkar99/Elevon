@@ -1,4 +1,6 @@
 import React from "react";
+import useTextReveal from "../hooks/useTextReveal";
+import useFadeIn from "../hooks/useFadeIn";
 
 const testimonials = [
   {
@@ -46,8 +48,11 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const text = useTextReveal();
+  const para = useTextReveal();
+  const cards = useFadeIn();
   return (
-    <section className="w-full bg-black px-4 sm:px-6 py-24">
+    <section ref={cards} className="w-full bg-black px-4 sm:px-6 py-24">
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center mb-16">
         <div className="mb-6">
@@ -56,18 +61,18 @@ const Testimonials = () => {
           </span>
         </div>
 
-        <h2 className="text-white font-[font5] tracking-tighter leading-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+        <h2 ref={text} className="text-white font-[font5] tracking-tighter leading-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
           Client Feedback
         </h2>
 
-        <p className="mt-4 text-gray-400 font-[font4] text-sm sm:text-base md:text-lg">
+        <p ref={para} className="mt-4 text-gray-400 font-[font4] text-sm sm:text-base md:text-lg">
           Discover success stories from satisfied clients. Learn how we assisted
           them in reaching their objectives.
         </p>
       </div>
 
       {/* Masonry Grid */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-2 font-[font4]  max-w-7xl mx-auto">
+      <div className="ade-item columns-1 sm:columns-2 lg:columns-3 gap-2 font-[font4]  max-w-7xl mx-auto">
         {testimonials.map((item, index) => (
           <div key={index}>
             {item.type === "image" ? (

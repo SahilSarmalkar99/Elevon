@@ -1,4 +1,5 @@
 import React from "react";
+import useTextReveal from "../../hooks/useTextReveal";
 
 const blogs = [
   {
@@ -16,6 +17,8 @@ const blogs = [
 ];
 
 const BlogSection = () => {
+    const text = useTextReveal();
+  const para = useTextReveal();
   return (
     <section className="w-full bg-black text-white py-24 px-4 sm:px-6">
 
@@ -26,11 +29,11 @@ const BlogSection = () => {
           Blog and News
         </span>
 
-        <h2 className="mt-6 text-4xl md:text-6xl font-[font5] tracking-tighter leading-tighter">
+        <h2 ref={text} className="mt-6 text-4xl md:text-6xl font-[font5] tracking-tighter leading-tighter">
           Insights, Ideas, and Perspectives
         </h2>
 
-        <p className="mt-4 text-gray-400 max-w-xl font-[font4] text-sm sm:text-base">
+        <p ref={para} className="mt-4 text-gray-400 max-w-xl font-[font4] text-sm sm:text-base">
           Have questions? Our FAQ section has you covered with
           quick answers to the most common inquiries.
         </p>

@@ -12,7 +12,7 @@ const useFadeIn = (options = {}) => {
     y = 80,
     duration = 0.7,
     stagger = 0.15,
-    start = "top 70%",
+    start = "top 50%",
     end = null,
     scrub = false,
     once = true,

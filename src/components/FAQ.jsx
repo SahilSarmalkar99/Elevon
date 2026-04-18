@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import useTextReveal from "../hooks/useTextReveal";
+import useFadeIn from "../hooks/useFadeIn";
 const faqs = [
   {
     q: "What do I need to get started?",
@@ -33,8 +34,12 @@ const FAQ = () => {
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+    const text = useTextReveal();
+  const para = useTextReveal();
+  const card = useFadeIn();
 
   return (
+    
     <section className="w-full bg-black px-4 sm:px-6 py-24">
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -49,7 +54,7 @@ const FAQ = () => {
           </div>
 
           {/* Heading */}
-          <h2 className="
+          <h2 ref={text} className="
             text-white font-semibold tracking-tighter
             text-4xl sm:text-5xl md:text-6xl
             leading-tighter font-[font5]
@@ -58,7 +63,7 @@ const FAQ = () => {
           </h2>
 
           {/* Description */}
-          <p className="mt-6 text-gray-400 font-[font4] text-sm sm:text-base max-w-md">
+          <p ref={para} className="mt-6 text-gray-400 font-[font4] text-sm sm:text-base max-w-md">
             Have questions? Find clear, concise answers to the most common inquiries below.
           </p>
         </div>
@@ -69,7 +74,7 @@ const FAQ = () => {
           {faqs.map((item, index) => (
             <div
               key={index}
-              className="bg-white/5 border border-white/5 rounded-2xl overflow-hidden"
+              className="fade-item bg-white/5 border border-white/5 rounded-2xl overflow-hidden"
             >
               {/* Question */}
               <button

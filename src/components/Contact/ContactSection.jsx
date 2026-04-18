@@ -1,5 +1,7 @@
 import React from "react";
 import BgVideo from "../BgVideo";
+import useTextReveal from "../../hooks/useTextReveal";
+import useFadeIn from "../../hooks/useFadeIn";
 
 const ContactSection = () => {
   const inputClass =
@@ -9,20 +11,18 @@ const ContactSection = () => {
     "w-full px-5 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-white placeholder:text-gray-500 outline-none transition-all duration-300 focus:border-white/10 focus:bg-white/[0.05]";
 
   const labelClass = "text-sm text-gray-400 mb-2 block";
+    const text = useTextReveal();
+  const para = useTextReveal();
+  const card = useFadeIn();
 
   return (
-    <section className="w-full bg-black text-white">
+    <section ref={card} className="w-full bg-black text-white">
       {/* HERO */}
       <div className="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         {/* VIDEO */}
-        <div className="absolute inset-0 z-0">
           <BgVideo />
-        </div>
-
         
 
-        {/* GLOW */}
-        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_60%_40%,rgba(255,120,60,0.35),transparent_60%)] blur-3xl" />
 
         {/* CONTENT */}
         <div className="relative z-20 max-w-4xl">
@@ -30,12 +30,12 @@ const ContactSection = () => {
             Let’s Work Together
           </span>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[font5] leading-tighter tracking-tighter">
+          <h2 ref={text} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[font5] leading-tighter tracking-tighter">
             Have Something in Mind?
             <br /> We are all here
           </h2>
 
-          <p className="mt-6 text-gray-300 font-[font4] text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+          <p ref={para} className="mt-6 text-gray-300 font-[font4] text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed">
             Whether you need clarity, strategy, or full-scale execution — our
             team is here to support your growth.
           </p>
@@ -43,7 +43,7 @@ const ContactSection = () => {
       </div>
 
       {/* FORM SECTION */}
-      <div className="max-w-7xl -mt-20 mx-auto px-6 font-[font4]  z-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="fade-item max-w-7xl -mt-20 mx-auto px-6 font-[font4]  z-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* LEFT FORM */}
         <div className="lg:col-span-2 relative bg-[#0b0b0b]/1 backdrop-blur-xl rounded-3xl p-6 md:p-10 border border-white/[0.06] shadow-[0_40px_120px_rgba(0,0,0,0.9)] overflow-hidden">
          

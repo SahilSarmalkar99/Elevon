@@ -8,6 +8,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import useTextReveal from "../../hooks/useTextReveal";
+import useCardPop from "../../hooks/useCardPop";
 
 const services = [
   {
@@ -45,8 +46,9 @@ const services = [
 const Services = () => {
   const text = useTextReveal();
   const para = useTextReveal();
+  const card = useCardPop();
   return (
-    <section className="w-full bg-black px-4 sm:px-6 py-24">
+    <section ref={card} className="w-full bg-black px-4 sm:px-6 py-24">
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center mb-16">
         {/* Badge */}
@@ -92,7 +94,7 @@ const Services = () => {
         {services.map((item, index) => (
           <div
             key={index}
-            className="
+            className=" card
               bg-white/5 border border-white/5
               rounded-2xl
               p-6 sm:p-8

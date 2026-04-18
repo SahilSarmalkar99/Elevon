@@ -1,5 +1,7 @@
 import React from "react";
 import BgVideo from "../BgVideo";
+import useTextReveal from "../../hooks/useTextReveal";
+import useFadeIn from "../../hooks/useFadeIn";
 
 const projects = [
   {
@@ -35,8 +37,11 @@ const projects = [
 ];
 
 const PortfolioSection = () => {
+  const text = useTextReveal();
+  const para = useTextReveal();
+  const card = useFadeIn();
   return (
-    <section className="w-full  text-white">
+    <section ref={card} className="w-full  text-white">
       {/* HERO */}
       <div className="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         <BgVideo />
@@ -50,11 +55,11 @@ const PortfolioSection = () => {
             Explore Our Portfolio
           </span>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[font5] leading-tighter tracking-tighter max-w-4xl">
+          <h2 ref={text} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[font5] leading-tighter tracking-tighter max-w-4xl">
             Explore Our <br /> Impactful Projects
           </h2>
 
-          <p className="mt-6 font-[font4] text-gray-300 text-sm sm:text-base md:text-lg max-w-xl">
+          <p ref={para} className="mt-6 font-[font4] text-gray-300 text-sm sm:text-base md:text-lg max-w-xl">
             From ambitious startups to established brands, we build powerful
             digital experiences that elevate presence and drive measurable
             results.
@@ -63,7 +68,7 @@ const PortfolioSection = () => {
       </div>
 
       {/* GRID */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 -mt-20 md:grid-cols-2 gap-2">
+      <div className="fade-item max-w-7xl mx-auto px-6 grid grid-cols-1 -mt-20 md:grid-cols-2 gap-2">
         {projects.map((item, i) => (
           <div
             key={i}

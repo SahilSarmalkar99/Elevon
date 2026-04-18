@@ -1,9 +1,14 @@
 import React from "react";
 import BgVideo from "../BgVideo";
+import useTextReveal from "../../hooks/useTextReveal";
+import useFadeIn from "../../hooks/useFadeIn";
 
 const AboutHero = () => {
+    const text = useTextReveal();
+  const para = useTextReveal();
+  const card = useFadeIn();
   return (
-    <section className="w-full text-white">
+    <section ref={card} className="w-full text-white">
 
       {/* HERO */}
       <div className="relative w-full h-screen flex flex-col items-center justify-center text-center px-4 sm:px-6 overflow-hidden">
@@ -20,11 +25,11 @@ const AboutHero = () => {
             About Us
           </span>
 
-          <h1 className="font-[font5] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tighter tracking-tighter max-w-4xl">
+          <h1 ref={text} className="font-[font5] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tighter tracking-tighter max-w-4xl">
             Where brands <br /> become unforgettable
           </h1>
 
-          <p className="mt-6 text-gray-300 font-[ ] text-sm sm:text-base md:text-lg max-w-xl">
+          <p ref={para} className="mt-6 text-gray-300 font-[ ] text-sm sm:text-base md:text-lg max-w-xl">
             A team of creators and marketers elevating
             brands with powerful content and campaigns.
           </p>
@@ -34,7 +39,7 @@ const AboutHero = () => {
       {/* BLACK SECTION + IMAGE */}
       <div className="relative z-20 -mt-32 md:-mt-40 lg:-mt-48">
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6  pb-24">
+        <div className="fade-item max-w-6xl mx-auto px-4 sm:px-6  pb-24">
 
           <div className="rounded-2xl overflow-hidden shadow-2xl">
             <img

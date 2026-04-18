@@ -1,4 +1,6 @@
 import React from "react";
+import useFadeIn from "../../hooks/useFadeIn";
+import useTextReveal from "../../hooks/useTextReveal";
 
 import t1 from "../../assets/team/t1.avif";
 import t2 from "../../assets/team/t2.avif";
@@ -17,8 +19,11 @@ const team = [
 ];
 
 const TeamSection = () => {
+    const text = useTextReveal();
+  const para = useTextReveal();
+  const card = useFadeIn();
   return (
-    <section className="w-full bg-black text-white px-6 md:px-10 lg:px-16 py-20 md:py-28">
+    <section ref={card} className="w-full bg-black text-white px-6 md:px-10 lg:px-16 py-20 md:py-28">
 
       <div className="max-w-7xl mx-auto">
 
@@ -28,12 +33,12 @@ const TeamSection = () => {
         </span>
 
         {/* HEADING */}
-        <h2 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-[font4] leading-tighter tracking-tighter">
+        <h2 ref={text} className="mt-8 text-4xl sm:text-5xl md:text-6xl font-[font4] leading-tighter tracking-tighter">
           Minds behind Elevon
         </h2>
 
         {/* SUBTEXT */}
-        <p className="mt-6 text-gray-400 max-w-md text-base font-[font4] md:text-lg">
+        <p ref={para} className="mt-6 text-gray-400 max-w-md text-base font-[font4] md:text-lg">
           Our team blends strategy, creativity, and performance
           to build marketing that drives real growth.
         </p>
@@ -41,7 +46,7 @@ const TeamSection = () => {
       </div>
 
       {/* TEAM GRID */}
-      <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="fade-item max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         {team.map((member, i) => (
           <div
