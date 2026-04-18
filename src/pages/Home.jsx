@@ -1,5 +1,5 @@
 import React from 'react'
-import Hero from '../components/Home/hero'
+import Hero from '../components/Home/Hero'
 import About from '../components/Home/About'
 import ProcessSection from '../components/Home/ProcessSection'
 import Projects from '../components/Home/Projects'
