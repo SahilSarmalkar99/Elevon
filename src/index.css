@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "font1";
+  src: url("/src/assets/font/font1.woff2") format("woff2");
+}
+@font-face {
+  font-family: "font2";
+  src: url("/src/assets/font/font2.woff2") format("woff2");
+}
+@font-face {
+  font-family: "font3";
+  src: url("/src/assets/font/font3.woff2") format("woff2");
+}
+@font-face {
+  font-family: "font4";
+  src: url("/src/assets/font/font4.woff2") format("woff2");
+}
+@font-face {
+  font-family: "font5";
+  src: url("/src/assets/font/font5.woff2") format("woff2");
+}
+@font-face {
+  font-family: "font6";
+  src: url("/src/assets/font/font6.woff2") format("woff2");
+}
+
+.blur-overlay::before,
+.blur-overlay::after {
+  height: 40px;
+}
+
+.blur-overlay::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    transparent
+  );
+  backdrop-filter: blur(3px);
+}
+
+.blur-overlay::after {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.35),
+    transparent
+  );
+  backdrop-filter: blur(3px);
+}
+
+.label {
+  @apply text-sm text-gray-400 mb-2 block;
+}
+
+.input {
+  @apply w-full px-5 py-3 rounded-full bg-[#111] border border-white/5 
+  text-gray-200 placeholder:text-gray-500 outline-none 
+  focus:border-white/20 focus:bg-[#141414] 
+  transition-all duration-300;
+}

@@ -1,0 +1,71 @@
+.carousel-simple{
+    -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+    margin: 10px auto;
+    width: 95%;
+    height: 180px;
+    max-width: 1000px;
+    display: flex;
+    overflow: hidden;
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.group-simple{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    animation: scroll 80s linear infinite;
+}
+.group-reverse-simple{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    animation: scroll 40s linear infinite;
+    animation-direction: reverse;
+}
+
+.card-simple {
+  flex: 0 0 auto;
+  width: clamp(70px, 10vw, 150px);
+  height: clamp(70px, 10vw, 150px);
+
+  background: transparent;
+  box-shadow: none;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotateY(20deg) rotateX(5deg);
+  transition: transform 0.4s ease;
+}
+
+.card-simple img {
+  max-width: 100%;
+  max-height: 100%;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
+}
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+}
