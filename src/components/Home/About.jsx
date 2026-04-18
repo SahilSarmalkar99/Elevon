@@ -1,4 +1,6 @@
 import React from "react";
+import useTextReveal from "../../hooks/useTextReveal";
+import useCardSlideIn from "../../hooks/useCardSlideIn";
 
 const stats = [
   {
@@ -24,8 +26,12 @@ const stats = [
 ];
 
 const About = () => {
+
+  const headingRef = useTextReveal();
+const paraRef = useTextReveal();
+const cards = useCardSlideIn();
   return (
-    <section className="w-full min-h-screen bg-black text-white px-6 py-20 flex flex-col items-center">
+    <section ref={cards} className="w-full min-h-screen bg-black text-white px-6 py-20 flex flex-col items-center">
       {/* Top Tag */}
       <div className="mb-6">
         <span className="px-5 py-3 rounded-full bg-white/10 text-sl font-[font1] text-gray-300">
@@ -35,6 +41,7 @@ const About = () => {
 
       {/* Heading */}
       <h1
+        ref={headingRef}
         className="
         text-center font-semibold tracking-tighter 
         text-3xl sm:text-4xl md:text-5xl lg:text-6xl
@@ -47,6 +54,7 @@ const About = () => {
 
       {/* Description */}
       <p
+      ref={paraRef}
         className="
         mt-4 text-center text-gray-400
         text-sm sm:text-base md:text-lg
@@ -62,7 +70,7 @@ const About = () => {
         {stats.map((item, index) => (
           <div
             key={index}
-            className="
+            className=" card
         bg-white/[0.03]
         border border-white/10
         rounded-2xl

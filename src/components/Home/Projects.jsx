@@ -1,4 +1,6 @@
 import React from "react";
+import useFadeIn from "../../hooks/useFadeIn";
+import useTextReveal from "../../hooks/useTextReveal";
 
 const projects = [
   {
@@ -24,8 +26,11 @@ const projects = [
 ];
 
 const Projects = () => {
+  const text = useTextReveal();
+  const para = useTextReveal();
+  const card = useFadeIn();
   return (
-    <section className="w-full bg-black px-4 sm:px-6 py-24">
+    <section ref={card} className="w-full bg-black px-4 sm:px-6 py-24">
 
       {/* 🔥 Top Section (MISSING IN YOUR UI) */}
       <div className="max-w-3xl mx-auto text-center mb-16">
@@ -38,7 +43,7 @@ const Projects = () => {
         </div>
 
         {/* Heading */}
-        <h2 className="
+        <h2 ref={text} className="
           text-white font-semibold tracking-tighter leading-tighter
           text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[font4]
         ">
@@ -46,7 +51,7 @@ const Projects = () => {
         </h2>
 
         {/* Description */}
-        <p className="
+        <p ref={para} className="
           mt-4 text-gray-400
           text-sm sm:text-base md:text-lg font-[font5]
         ">
@@ -61,7 +66,7 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="group relative rounded-3xl overflow-hidden"
+            className="fade-item group relative rounded-3xl overflow-hidden"
           >
             {/* Image */}
             <img

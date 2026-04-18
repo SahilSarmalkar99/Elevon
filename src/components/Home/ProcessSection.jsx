@@ -1,5 +1,7 @@
 import React from "react";
 import { Search, Layers, Settings, TrendingUp } from "lucide-react";
+import useTextReveal from "../../hooks/useTextReveal";
+import useFadeIn from "../../hooks/useFadeIn";
 
 const steps = [
   {
@@ -26,8 +28,12 @@ const steps = [
 ];
 
 const ProcessSection = () => {
+
+  const text = useTextReveal();
+  const para = useTextReveal();
+  const card = useFadeIn();
   return (
-    <section className="w-full bg-black text-white py-24">
+    <section ref={card} className="w-full bg-black text-white py-24">
 
       {/* MAIN GRID */}
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -41,11 +47,11 @@ const ProcessSection = () => {
               How We Work?
             </p>
 
-            <h2 className="text-4xl md:text-6xl font-[font5] leading-tight mb-4">
+            <h2 ref={text} className="text-4xl md:text-6xl font-[font5] leading-tight mb-4">
               Our proven <br /> growth process
             </h2>
 
-            <p className="text-gray-400 max-w-xl">
+            <p ref={para} className="text-gray-400 max-w-xl">
               We blend strategy, creativity, and data to design campaigns that grab
               attention, foster engagement, and drive tangible results.
             </p>
@@ -60,7 +66,7 @@ const ProcessSection = () => {
                   className={`
                     w-full max-w-xl rounded-3xl p-10
                     border border-white/10
-                    transition-all duration-300
+                    transition-all duration-300 fade-item
                     ${
                       step.highlight
                         ? "bg-gradient-to-br from-red-900/40 via-orange-500/30 to-orange-400/40"
@@ -103,7 +109,7 @@ const ProcessSection = () => {
         </div>
 
         {/* RIGHT SIDE (Sticky Image aligned with cards) */}
-        <div className="hidden lg:block">
+        <div className="fade-item hidden lg:block">
           <div className="sticky top-24 flex justify-end">
 
             <div className="w-[90%]">

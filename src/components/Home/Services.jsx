@@ -7,6 +7,7 @@ import {
   DollarSign,
   BarChart3,
 } from "lucide-react";
+import useTextReveal from "../../hooks/useTextReveal";
 
 const services = [
   {
@@ -42,6 +43,8 @@ const services = [
 ];
 
 const Services = () => {
+  const text = useTextReveal();
+  const para = useTextReveal();
   return (
     <section className="w-full bg-black px-4 sm:px-6 py-24">
       {/* Header */}
@@ -55,6 +58,7 @@ const Services = () => {
 
         {/* Title */}
         <h2
+        ref={text}
           className="
           text-white font-[font5] leading-tighter tracking-tighter
           text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
@@ -65,6 +69,7 @@ const Services = () => {
 
         {/* Subtitle */}
         <p
+        ref={para}
           className="
           mt-4 text-gray-400
           text-sm sm:text-base md:text-lg

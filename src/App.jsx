@@ -10,8 +10,10 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 
 import { Route, Routes } from "react-router-dom";
+import useLenis from "./hooks/useLenis";
 
 const App = () => {
+  useLenis();
   return (
     <div className="relative w-full min-h-screen bg-black blur-overlay">
 

@@ -1,10 +1,15 @@
 import React from "react";
 import Carousel from "./Carousel";
 import BgVideo from "../BgVideo";
+import useTextReveal from "../../hooks/useTextReveal";
+import useFadeIn from "../../hooks/useFadeIn";
 
 const Hero = () => {
+
+  const ref = useTextReveal();
+  const fade = useFadeIn();
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-30">
+    <section ref={fade} className="relative w-full min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 pt-30">
 
         <BgVideo />
       {/* Content */}
@@ -12,16 +17,16 @@ const Hero = () => {
 
         {/* Rating */}
         <div className="mb-4 sm:mb-6">
-          <div className="text-orange-400 text-xs sm:text-sm mb-2">
+          <div className="fade-item text-orange-400 text-xs sm:text-sm mb-2">
             ★★★★★
           </div>
-          <p className="text-gray-300 text-xs sm:text-sm font-[font6]">
+          <p className="fade-item text-gray-300 text-xs sm:text-sm font-[font6]">
             5.0 rating · Helped over 100+ businesses
           </p>
         </div>
 
         {/* Heading */}
-        <h1 className="
+        <h1 ref={ref} className="
           text-white font-semibold font-[font4]
           leading-[1.1] tracking-tight
           text-3xl sm:text-4xl md:text-6xl lg:text-7xl
@@ -31,7 +36,7 @@ const Hero = () => {
         </h1>
 
         {/* Description */}
-        <p className="
+        <p className="fade-item
           mt-4 sm:mt-6 text-gray-300
           text-xs sm:text-sm md:text-lg
           max-w-xl sm:max-w-2xl mx-auto font-[font6]
@@ -41,7 +46,7 @@ const Hero = () => {
         </p>
 
         {/* CTA */}
-        <div className="mt-6 sm:mt-8">
+        <div className="fade-item mt-6 sm:mt-8">
           <button className="
             bg-white text-black
             px-5 sm:px-6 py-2.5 sm:py-3
@@ -56,7 +61,7 @@ const Hero = () => {
       </div>
 
       {/* Carousel (separate + responsive spacing) */}
-      <div className="mt-5 z-20  w-full">
+      <div className="fade-item mt-5 z-20  w-full">
         <Carousel />
       </div>
 
