@@ -31,7 +31,7 @@ const About = () => {
 const paraRef = useTextReveal();
 const cards = useCardSlideIn();
   return (
-    <section ref={cards} className="w-full min-h-screen bg-black text-white px-6 py-20 flex flex-col items-center">
+    <section ref={cards} className="w-full min-h-screen bg-black text-white px-6 py-10 md:py-20 flex flex-col items-center">
       {/* Top Tag */}
       <div className="mb-6">
         <span className="px-5 py-3 rounded-full bg-white/10 text-sl font-[font1] text-gray-300">

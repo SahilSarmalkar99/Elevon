@@ -24,11 +24,11 @@ const BgVideo = ({ isGlobal = false }) => {
         "
       />
 
-      {/* SOFT OVERLAY */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* SOFT GLOBAL DARK OVERLAY */}
+<div className="absolute inset-0 bg-black/40" />
 
-      {/* OPTIONAL: EXTRA SMOOTH GRADIENT BLUR (Framer style) */}
-      <div className="absolute inset-0 backdrop-blur-[20px] opacity-20" />
+{/* 🔥 BOTTOM FADE TO BLACK (KEY PART) */}
+<div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
     </div>
   );
 };

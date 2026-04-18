@@ -9,11 +9,11 @@ const useFadeIn = (options = {}) => {
 
   const {
     selector = ".fade-item",
-    y = 80,
-    duration = 0.7,
-    stagger = 0.15,
-    start = "top 50%",
-    end = null,
+    y = 60,
+    duration = 0.9,
+    stagger = 0.12,
+    start = "top 85%",
+    end = "top 50%",
     scrub = false,
     once = true,
     markers = false,
@@ -23,23 +23,26 @@ const useFadeIn = (options = {}) => {
     if (!ref.current) return;
 
     const ctx = gsap.context(() => {
-      const items = ref.current.querySelectorAll(selector);
+      const items = gsap.utils.toArray(selector, ref.current);
       if (!items.length) return;
 
-      gsap.fromTo(
-        items,
-        {
-          opacity: 0,
-          y,
-        },
-        {
+      //  Set initial state (better performance than fromTo)
+      gsap.set(items, {
+        opacity: 0,
+        y,
+        willChange: "transform, opacity",
+      });
+
+      // 🔥 Animate EACH item separately (big upgrade)
+      items.forEach((item, i) => {
+        gsap.to(item, {
           opacity: 1,
           y: 0,
           duration,
-          ease: "power2.out",
-          stagger,
+          ease: "power3.out",
+          delay: i * stagger * 0.5, // subtle cascade (not too obvious)
           scrollTrigger: {
-            trigger: ref.current,
+            trigger: item,
             start,
             end,
             scrub,
@@ -48,12 +51,14 @@ const useFadeIn = (options = {}) => {
               ? "play none none none"
               : "play reverse play reverse",
           },
-        }
-      );
+        });
+      });
     }, ref);
 
-    // refresh for layout shifts (important with images/fonts)
-    ScrollTrigger.refresh();
+    // safer refresh (prevents layout jump issues)
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
 
     return () => ctx.revert();
   }, [selector, y, duration, stagger, start, end, scrub, once, markers]);

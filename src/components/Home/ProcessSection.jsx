@@ -33,7 +33,7 @@ const ProcessSection = () => {
   const para = useTextReveal();
   const card = useFadeIn();
   return (
-    <section ref={card} className="w-full bg-black text-white py-24">
+    <section ref={card} className="w-full bg-black text-white py-10 md:py-24">
 
       {/* MAIN GRID */}
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -58,7 +58,7 @@ const ProcessSection = () => {
           </div>
 
           {/* Cards */}
-          <div className="flex flex-col gap-6">
+          <div className="fade-item flex flex-col gap-6">
             {steps.map((step, index) => (
               <div key={index}>
 
@@ -66,7 +66,7 @@ const ProcessSection = () => {
                   className={`
                     w-full max-w-xl rounded-3xl p-10
                     border border-white/10
-                    transition-all duration-300 fade-item
+                    transition-all duration-300 
                     ${
                       step.highlight
                         ? "bg-gradient-to-br from-red-900/40 via-orange-500/30 to-orange-400/40"

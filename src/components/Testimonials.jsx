@@ -52,7 +52,7 @@ const Testimonials = () => {
   const para = useTextReveal();
   const cards = useFadeIn();
   return (
-    <section ref={cards} className="w-full bg-black px-4 sm:px-6 py-24">
+    <section ref={cards} className="w-full bg-black px-4 sm:px-6 py-10 md:py-24">
       {/* Header */}
       <div className="max-w-3xl mx-auto text-center mb-16">
         <div className="mb-6">
@@ -72,7 +72,7 @@ const Testimonials = () => {
       </div>
 
       {/* Masonry Grid */}
-      <div className="ade-item columns-1 sm:columns-2 lg:columns-3 gap-2 font-[font4]  max-w-7xl mx-auto">
+      <div className="fade-item columns-1 sm:columns-2 lg:columns-3 gap-2 font-[font4]  max-w-7xl mx-auto">
         {testimonials.map((item, index) => (
           <div key={index}>
             {item.type === "image" ? (

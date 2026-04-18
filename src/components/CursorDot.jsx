@@ -34,6 +34,7 @@ const CursorDot = () => {
     <div
       ref={dotRef}
       className="
+      hidden md:block
         fixed top-0 left-0
         w-3 h-3 md:w-4 md:h-4
         bg-white rounded-full

@@ -30,7 +30,7 @@ const Projects = () => {
   const para = useTextReveal();
   const card = useFadeIn();
   return (
-    <section ref={card} className="w-full bg-black px-4 sm:px-6 py-24">
+    <section ref={card} className="w-full bg-black px-4 sm:px-6 py-10 md:py-24">
 
       {/* 🔥 Top Section (MISSING IN YOUR UI) */}
       <div className="max-w-3xl mx-auto text-center mb-16">

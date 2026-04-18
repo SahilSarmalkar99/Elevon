@@ -41,7 +41,7 @@ const Pricing = () => {
   const card = useFadeIn(); 
   const navigate = useNavigate();
   return (
-    <section ref={card} className="w-full bg-black px-2 text-white py-24">
+    <section ref={card} className="w-full bg-black px-2 text-white py-10 md:py-24">
 
       {/* Heading */}
       <div className="max-w-4xl mx-auto text-center px-4 mb-20">

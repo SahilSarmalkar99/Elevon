@@ -9,7 +9,7 @@ const AboutContent = () => {
   const card = useCardSlideIn();
     const navigate = useNavigate();
   return (
-    <section ref={card} className="w-full bg-black text-white px-6 md:px-10 lg:px-16 py-20 md:py-28">
+    <section ref={card} className="w-full bg-black text-white px-6 md:px-10 lg:px-16 py-10 md:py-24">
       {/* TOP TAG */}
       <div className="max-w-7xl mx-auto">
         <span className="px-5 py-3 font-[font3] rounded-full bg-white/10 text-sl text-gray-300">

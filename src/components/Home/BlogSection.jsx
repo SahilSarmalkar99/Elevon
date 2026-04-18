@@ -1,5 +1,6 @@
 import React from "react";
 import useTextReveal from "../../hooks/useTextReveal";
+import useFadeIn from "../../hooks/useFadeIn";
 
 const blogs = [
   {
@@ -19,8 +20,10 @@ const blogs = [
 const BlogSection = () => {
     const text = useTextReveal();
   const para = useTextReveal();
+  const card = useFadeIn();
+
   return (
-    <section className="w-full bg-black text-white py-24 px-4 sm:px-6">
+    <section ref={card} className="w-full bg-black text-white py-10 md:py-24 px-4 sm:px-6">
 
       {/* HEADER */}
       <div className="max-w-7xl mx-auto mb-16">
@@ -41,10 +44,10 @@ const BlogSection = () => {
       </div>
 
       {/* BOTTOM GRID */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className=" max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
         {blogs.map((item, index) => (
-          <div key={index} className="group cursor-pointer">
+          <div key={index} className="fade-item group cursor-pointer">
 
             {/* Image */}
             <div className="overflow-hidden rounded-2xl">
